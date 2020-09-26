@@ -3,6 +3,8 @@ A very simple caching proxy for the Web Map Tile Service protocol
 
 Example usage:
 
+    pip3 install requests
+
     ./wmts-proxy.py "https://example.com/wmts" \
                     "http://localhost:8000/" \
                     --referer "https://example.com/map/"
