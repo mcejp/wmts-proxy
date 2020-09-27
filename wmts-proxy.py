@@ -13,6 +13,7 @@ parser = argparse.ArgumentParser(description='WMTS proxy for French tourist map'
 parser.add_argument("upstream_url")
 parser.add_argument("self_url")
 parser.add_argument("--referer")
+parser.add_argument("--user-agent")
 args = parser.parse_args()
 
 cache_dir = Path("cache")
@@ -91,6 +92,9 @@ class MyHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
 
         if args.referer is not None:
             headers["Referer"] = args.referer
+
+        if args.user_agent is not None:
+            headers["User-Agent"] = args.user_agent
 
         r = requests.get(full_url, headers=headers)
 
